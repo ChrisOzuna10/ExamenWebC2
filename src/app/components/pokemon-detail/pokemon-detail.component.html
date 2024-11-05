@@ -1,0 +1,24 @@
+<div *ngIf="pokemon" class="pokemon-details">
+  <h2 class="pokemon-name">{{ pokemon.name | titlecase }}</h2>
+
+  <div class="gallery">
+    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" class="sprite" />
+    <img [src]="pokemon.sprites.back_default" alt="{{ pokemon.name }} - Back" class="sprite" />
+    <img *ngIf="pokemon.sprites.front_shiny" [src]="pokemon.sprites.front_shiny" alt="{{ pokemon.name }} - Shiny" class="sprite" />
+    <img *ngIf="pokemon.sprites.back_shiny" [src]="pokemon.sprites.back_shiny" alt="{{ pokemon.name }} - Shiny Back" class="sprite" />
+  </div>
+
+  <div class="info-section">
+    <h3>Habilidades</h3>
+    <ul>
+      <li *ngFor="let ability of pokemon.abilities">{{ ability.ability.name }}</li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <h3>Juegos en los que aparece</h3>
+    <ul>
+      <li *ngFor="let game of pokemon.game_indices">{{ game.version.name }}</li>
+    </ul>
+  </div>
+</div>
